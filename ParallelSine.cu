@@ -186,6 +186,10 @@ int main (int argc, char **argv)
    //End time for the GPU Memory Copy to Host
    long long GPU_Mem_Copy_Host_end_time = stop_timer(GPU_Mem_Copy_Host_start_time, "\nGPU Memory Copy to Host");
 
+   //free GPU memory allocation
+   cudaFree(d_input);
+   cudaFree(d_output);
+
    //End time for the GPU Run Time
    long long GPU_Run_Time_end_time = stop_timer(GPU_Run_Time_start_time, "\nTotal GPU Run Time");
 
