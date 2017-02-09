@@ -50,7 +50,7 @@ void sine_serial(float *input, float *output)
 
 __global__ void sine_parallel(float *d_input, float *d_output)
 {
-  int idx = threadIdx.x;
+  int idx = threadIdx.x + blockDim.x * blockIdx.x;
   float value = d_input[idx];
   float numer = d_input[idx] * d_input[idx] * d_input[idx];
   int denom = 6;
